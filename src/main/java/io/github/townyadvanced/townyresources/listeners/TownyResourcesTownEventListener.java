@@ -13,6 +13,8 @@ import net.kyori.adventure.text.Component;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
@@ -38,26 +40,32 @@ public class TownyResourcesTownEventListener implements Listener {
 				return;
 
 			productionAsString = TownyResourcesMessagingUtil.adjustAmountsForTownLevelModifier(town, productionAsString);
-			
-			//Resources:
-			Component component = Component.empty();
-			component = component.append(Component.newline());
-			component = component.append(TownyComponents.legacy(translator.of("townyresources.town.screen.header"))).appendNewline();
+
+			TextComponent.Builder builder = Component.text();
+			builder.append(Component.text("[", NamedTextColor.GRAY));
+			builder.append(Component.text("Resources", NamedTextColor.GREEN));
+			builder.append(Component.text("]", NamedTextColor.GRAY));
+
+			TextComponent.Builder hoverBuilder = Component.text();
+			hoverBuilder.append(TownyComponents.legacy(translator.of("townyresources.town.screen.header"))).appendNewline();
 
 			// > Daily Productivity [2]: 32 oak Log, 32 sugar cane
-			component = component.append(TownyResourcesMessagingUtil.getSubComponentForGovernmentScreens(translator, productionAsString, "townyresources.town.screen.daily.production")).appendNewline();
+			hoverBuilder.append(TownyResourcesMessagingUtil.getSubComponentForGovernmentScreens(translator, productionAsString, "townyresources.town.screen.daily.production")).appendNewline();
 
 			// > Available For Collection [2]: 64 oak log, 64 sugar cane
-			component = component.append(TownyResourcesMessagingUtil.getSubComponentForGovernmentScreens(translator, availableAsString, "townyresources.town.screen.available.for.collection")).appendNewline();
+			hoverBuilder.append(TownyResourcesMessagingUtil.getSubComponentForGovernmentScreens(translator, availableAsString, "townyresources.town.screen.available.for.collection"));
+
 			// > TownLevel Modifier: +10%.
 			if (TownySettings.getTownLevel(town).resourceProductionModifier() != 1.0)
-				component = component.append(getTownModifierComponent(town, translator)).appendNewline();
+				hoverBuilder.appendNewline().append(getTownModifierComponent(town, translator));
 
 			// > Multiplier: 100%
 			if (TownyResourcesGovernmentMetaDataController.hasMultiplier(town))
-				component = component.append(getMultiplierComponent(town, translator)).appendNewline();
+				hoverBuilder.appendNewline().append(getMultiplierComponent(town, translator));
 
-			event.getStatusScreen().addComponentOf("TownyResources", component);
+			builder.hoverEvent(hoverBuilder.build());
+
+			event.getStatusScreen().addComponentOf("TownyResources", builder.build());
 		}
 	}
 

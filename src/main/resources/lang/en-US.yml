@@ -1,5 +1,5 @@
 name: TownyResources
-version: 0.10
+version: 0.11
 language: english
 author: Goosius
 website: 'https://github.com/TownyAdvanced/TownyResources'
@@ -45,7 +45,7 @@ description: >
 #
 #
 
-townyresources.plugin_prefix: '&f[&6Towny Resources&f] '
+townyresources.plugin_prefix: '&6[Towny Resources]&e '
 
 ### Reloading
 townyresources.townyresources_reloaded_successfully: "TownyResources reloaded successfully."
@@ -54,23 +54,23 @@ townyresources.admin_help_reload: 'Reload TownyResources.'
 
 ### Town Screen
 townyresources.town.screen.header: "&2Resources:"
-townyresources.town.screen.daily.production: '&2 > Daily Production &a[%s]&2: &f'
-townyresources.town.screen.available.for.collection: '&2 > Available For Collection &a[%s]&2: &f'
-townyresources.town.screen.town.level.modifier: '&2 > Town Level Modifier: &f %s'
+townyresources.town.screen.daily.production: '&aDaily Production &a[%s]&2: &f'
+townyresources.town.screen.available.for.collection: '&aAvailable For Collection &a[%s]&2: &f'
+townyresources.town.screen.town.level.modifier: '&aTown Level Modifier: &f %s'
 
 ### Nation Screen
 townyresources.nation.screen.header: "&2Resources:"
-townyresources.nation.screen.daily.production: '&2 > Daily Production &a[%s]&2: &f'
-townyresources.nation.screen.available.for.collection: '&2 > Available For Collection &a[%s]&2: &f'
+townyresources.nation.screen.daily.production: '&aDaily Production &a[%s]&2: &f'
+townyresources.nation.screen.available.for.collection: '&aAvailable For Collection &a[%s]&2: &f'
 
 ### TownBlock Screen
 townyresources.townblock.screen.header: "&2Resources:"
-townyresources.townblock.screen.plot_status: "&2 > SurveySite Plot Status: "
+townyresources.townblock.screen.plot_status: "&aSurveySite Plot Status: "
 townyresources.townblock.screen.plot_status_used: "Used"
 townyresources.townblock.screen.plot_status_unused: "Unused"
-townyresources.townblock.screen.biome: "&2 > Biome: %s"
-townyresources.townblock.screen.daily.production: '&2 > Daily Production &a[%s]&2: &f%s'
-townyresources.townblock.screen.amount_disclaimer: '&2 > * Amount shown represents a base amount which may be affected by other modifiers.'
+townyresources.townblock.screen.biome: "&aBiome: %s"
+townyresources.townblock.screen.daily.production: '&aDaily Production &a[%s]&2: &f%s'
+townyresources.townblock.screen.amount_disclaimer: '&a* Amount shown represents a base amount which may be affected by other modifiers.'
 
 ### Surveys 
 townyresources.not_your_town: 'You do not belong to this town.'
@@ -230,4 +230,4 @@ townyresources.dominantbiome: "A SurveySite plot with the dominant biome of %s h
 townyresources.tra_town_setmultiplierhelp: "Sets the multiplier of the town's resources."
 townyresources.tra_town_setmultiplierhelp2: "Resets the multiplier of the town's resources."
 townyresources.tra_town_multiplier_set: "The town of %s has had their multiplier set to %s."
-townyresources.town.screen.multiplier: '&2 > Multiplier: &f %s'
+townyresources.town.screen.multiplier: '&aMultiplier: &f %s'

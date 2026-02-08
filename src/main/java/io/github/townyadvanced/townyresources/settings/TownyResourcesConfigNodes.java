@@ -148,7 +148,7 @@ public enum TownyResourcesConfigNodes {
 			"# This list shows the resource extraction categories.",
 			"# ",
 			"# Each category is enclosed in curly brackets, and has 3 parts:",
-			"# 1 - The name of the category (used for messaging)",
+			"# 1- The name of the category (used for messaging)",
 			"# 2-  The daily limit per player (in stacks)",
 			"# 3-  The list of materials in the category"),
 	RESOURCE_EXTRACTION_LIMITS_UNBREAKABLES(

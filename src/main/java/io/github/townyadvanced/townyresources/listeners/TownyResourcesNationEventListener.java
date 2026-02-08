@@ -9,6 +9,10 @@ import io.github.townyadvanced.townyresources.settings.TownyResourcesSettings;
 import io.github.townyadvanced.townyresources.util.TownyResourcesMessagingUtil;
 import net.kyori.adventure.text.Component;
 
+import net.kyori.adventure.text.JoinConfiguration;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
@@ -20,7 +24,7 @@ import org.bukkit.event.Listener;
 public class TownyResourcesNationEventListener implements Listener {
 
 	/*
-	 * TownyResources will add resource info to the town screen
+	 * TownyResources will add resource info to the nation screen
 	 */
 	@EventHandler
 	public void onNationStatusScreen(NationStatusScreenEvent event) {
@@ -33,17 +37,19 @@ public class TownyResourcesNationEventListener implements Listener {
 			if(productionAsString.isEmpty() && availableAsString.isEmpty())
 				return;
 
-			//Resources:
-			Component component = Component.empty();
-			component = component.append(Component.newline());
-			component = component.append(TownyComponents.legacy(translator.of("townyresources.nation.screen.header"))).append(Component.newline());
-		
-			// > Daily Productivity [2]: 32 oak Log, 32 sugar cane
-			component = component.append(TownyResourcesMessagingUtil.getSubComponentForGovernmentScreens(translator, productionAsString, "townyresources.nation.screen.daily.production")).append(Component.newline());
-			
-			// > Available For Collection [2]: 64 oak log, 64 sugar cane
-			component = component.append(TownyResourcesMessagingUtil.getSubComponentForGovernmentScreens(translator, availableAsString, "townyresources.nation.screen.available.for.collection")).append(Component.newline());
-			event.getStatusScreen().addComponentOf("TownyResources", component);
+			TextComponent.Builder builder = Component.text();
+			builder.append(Component.text("[", NamedTextColor.GRAY));
+			builder.append(Component.text("Resources", NamedTextColor.GREEN));
+			builder.append(Component.text("]", NamedTextColor.GRAY));
+
+			TextComponent.Builder hoverBuilder = Component.text();
+			hoverBuilder.append(TownyComponents.legacy(translator.of("townyresources.nation.screen.header"))).appendNewline();
+			hoverBuilder.append(TownyResourcesMessagingUtil.getSubComponentForGovernmentScreens(translator, productionAsString, "townyresources.nation.screen.daily.production")).appendNewline();
+			hoverBuilder.append(TownyResourcesMessagingUtil.getSubComponentForGovernmentScreens(translator, availableAsString, "townyresources.nation.screen.available.for.collection"));
+
+			builder.hoverEvent(hoverBuilder.build());
+
+			event.getStatusScreen().addComponentOf("TownyResources", builder.build());
 		}
 	}
 }

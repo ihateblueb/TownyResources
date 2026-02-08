@@ -1,3 +1,8 @@
+# Orchid Fork
+
+This fork simply minimizes the added content to the town and nation status pages to a small hoverable element, similar to 
+how other Towny addons do.
+
 # TownyResources
 *TownyResources* adds value to towns, by giving each one a unique set of automatically-produced resources which can be collected by players (*e.g. Emeralds, Coal, Oak Log, Wheat etc.*).
 
